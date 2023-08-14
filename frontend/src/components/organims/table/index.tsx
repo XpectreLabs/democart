@@ -1,0 +1,1 @@
+export {Tabla} from './table'
