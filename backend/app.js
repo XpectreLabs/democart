@@ -3,17 +3,12 @@ const router = express();
 const cors = require('cors');
 const { readFileSync } = require('fs');
 const fs = require("fs");
-//const parser = require('csv-parser');
 const { parse } = require('csv-parse/sync');
-
-
-require('dotenv').config();
 
 router.use(express.static('public'));
 router.use(express.urlencoded({ extended:false }));
 router.use(express.json());
 router.use(cors());
-
 
 router.get('/cars', async (req,res, next) => {
   let listData = [];
@@ -71,7 +66,6 @@ router.post('/addCart', async (req,res, next) => {
   const price = req.body.price;
   const id = req.body.id;
 
-
   let item =
   {
     "Male": male,
@@ -118,18 +112,7 @@ router.post('/carDetail', async (req,res, next) => {
 });
 
 
-
-// Servidor HTTP
-// const serverHttp = http.createServer(router);
-// serverHttp.listen(process.env.HTTP_PORT, process.env.IP);
-// serverHttp.on('listening', () => console.info(`Notes App running at http://${process.env.IP}:${process.env.HTTP_PORT}`));
 router.listen(3001, () => {
   console.log("Aplicación ejecutandose ....");
 });
-
-
-
-// Servidor HTTP
-// const httpsServer = https.createServer(options, router);
-// httpsServer.listen(443, process.env.IP);
 
