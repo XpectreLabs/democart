@@ -92,24 +92,27 @@ router.post('/addCart', async (req,res, next) => {
 });
 
 
-router.get('/cars', async (req,res, next) => {
+router.post('/carDetail', async (req,res, next) => {
   let listData = [];
   const fileContent = readFileSync('./Cart.csv')
   const data = parse(fileContent);
+  const id_car = req.body.id;
 
   for(let j=1; j < Object.keys(data).length; j++){
-    let item = {
-      "Male": data[j][0],
-      "Model": data[j][1],
-      "Package": data[j][2],
-      "Color": data[j][3],
-      "Year": data[j][4],
-      "Category": data[j][5],
-      "Mileage": data[j][6],
-      "Price": data[j][7],
-      "Id": data[j][8]
-     }
-     listData.push(item);
+    if(data[j][8]===id_car) {
+      let item = {
+        "Male": data[j][0],
+        "Model": data[j][1],
+        "Package": data[j][2],
+        "Color": data[j][3],
+        "Year": data[j][4],
+        "Category": data[j][5],
+        "Mileage": data[j][6],
+        "Price": data[j][7],
+        "Id": data[j][8]
+       }
+       listData.push(item);
+    }
   }
   res.json({listData})
 });
