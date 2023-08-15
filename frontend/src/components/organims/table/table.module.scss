@@ -1,0 +1,9 @@
+.options{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rows :hover{
+  background: rgba(10, 121, 211, 0.582);
+  cursor: pointer;
+}

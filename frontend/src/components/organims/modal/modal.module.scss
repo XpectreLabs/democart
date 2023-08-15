@@ -1,0 +1,22 @@
+.form{
+  section{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .btn{
+    display: flex;
+    justify-content: flex-end;
+  }
+} 
+
+.btnOption{
+  display: flex;
+  justify-content: space-between;
+}
+
+.columns{  
+  text-align: left;
+  list-style: none;
+}
