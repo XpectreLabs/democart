@@ -58,7 +58,7 @@ router.post('/addCart', async (req,res, next) => {
 
   const male = req.body.male;
   const model = req.body.model;
-  const package = req.body.package;
+  const package = req.body.packag;
   const color = req.body.color;
   const year = req.body.year;
   const category = req.body.category;

@@ -25,7 +25,7 @@ const style = {
   p: 4,
 };
 
-export const ModalCustom = ({ showDetails, id, rows }: { showDetails: boolean, id:string, rows?: any }) => {
+export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos }: { showDetails: boolean, id:string, rows?: any, cargarDatos:Function, setListaDatos:Function }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -39,6 +39,47 @@ export const ModalCustom = ({ showDetails, id, rows }: { showDetails: boolean, i
   const [price, setPrice] = React.useState("");
 
   console.log(id)
+
+  const obtenerValor = (input:any) => {
+    let valorInput: HTMLInputElement = document.querySelector(input);
+    return valorInput?.value;
+  };
+
+  const save = () => {
+    let scriptURL = 'http://localhost:3001/addCart';
+
+    const male = obtenerValor("#make");
+    const model = obtenerValor("#model");
+    const packag = obtenerValor("#package");
+    const color = obtenerValor("#color");
+    const year = obtenerValor("#year");
+    const category = obtenerValor("#category");
+    const mileage = obtenerValor("#mileage");
+    const price = obtenerValor("#price");
+    const id = obtenerValor("#id");
+
+
+    const dataU = {male,model,packag,color,year,category,mileage,price,id};
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: JSON.stringify(dataU),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((resp) => resp.json())
+    .then(function(dataR) {
+      setTimeout(() => {
+          setOpen(false);
+          cargarDatos(setListaDatos);
+      }, 1200);
+    })
+    .catch(error => {
+      console.log(error.message);
+      console.error('Error!', error.message);
+    });
+  }
 
   const detail = (id:string) => {
     const scriptURL = 'http://localhost:3001/carDetail'; // deberia es
@@ -123,6 +164,7 @@ export const ModalCustom = ({ showDetails, id, rows }: { showDetails: boolean, i
                   <TextField id="model" label="Model" variant="standard" />
                   <TextField id="package" label="Package" variant="standard" />
                   <TextField id="color" label="Color" variant="standard" />
+                  <TextField id="id" label="Id" variant="standard" />
                 </div>
                 <div>
                   <TextField id="year" label="Year" variant="standard" />
@@ -136,7 +178,7 @@ export const ModalCustom = ({ showDetails, id, rows }: { showDetails: boolean, i
                 </div>
               </section>
               <div className={Styles.btn}>
-                <IconButton aria-label="Save" size="large" onClick={handleOpen}>
+                <IconButton aria-label="Save" size="large" onClick={()=>{save()}}>
                   <SendIcon fontSize="inherit" color="success" />
                 </IconButton>
               </div>

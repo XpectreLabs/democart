@@ -6,7 +6,7 @@ import { useState } from "react";
 
 let rows:any = [];
 
-async function cargarDatos(setListaDatos='') {
+async function cargarDatos(setListaDatos:any='') {
   let scriptURL = 'http://localhost:3001/cars';
   let dataUrl = {};
 
@@ -36,6 +36,10 @@ async function cargarDatos(setListaDatos='') {
      listData.push(item);
     }
     rows = listData;
+
+    if(setListaDatos)
+      setListaDatos(rows);
+
     console.log(rows);
   })
   .catch(error => {
@@ -64,10 +68,10 @@ export const Home = () => {
   return (
     <div>
       <Box className={styles.table}>
-        <Tabla rows={listaDatos} />
+        <Tabla rows={listaDatos} cargarDatos={cargarDatos} setListaDatos={setListaDatos} />
       </Box>
       <Box className={styles.mobile}>
-        <Responsive rows={listaDatos} />
+        <Responsive rows={listaDatos} cargarDatos={cargarDatos} setListaDatos={setListaDatos} />
       </Box>
       <div className="u-textAlignCenter">
           <img className={cargandoVisible? "Cargando Mt mostrarI-b Sf" : "Cargando Mt Sf"}  src="img/loading.gif" alt="" />

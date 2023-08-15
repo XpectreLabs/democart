@@ -37,7 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 let rows = [];
 
-export const Tabla = ({ rows }: { rows: any }) => {
+export const Tabla = ({ rows, cargarDatos, setListaDatos }: { rows: any, cargarDatos:Function, setListaDatos:Function }) => {
   
   return (
     <TableContainer component={Paper}>
@@ -77,11 +77,15 @@ export const Tabla = ({ rows }: { rows: any }) => {
                   <ModalCustom
                     showDetails={false}
                     id={row.id}
+                    cargarDatos={cargarDatos} 
+                    setListaDatos={setListaDatos}
                   />
                   <ModalCustom
                     showDetails={true}
                     rows={rows}
-                    id={row.id}  
+                    id={row.id}
+                    cargarDatos={cargarDatos}
+                    setListaDatos={setListaDatos}
                   />
                 </div>
               </StyledTableCell>

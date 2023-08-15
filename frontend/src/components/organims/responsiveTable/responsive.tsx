@@ -16,7 +16,7 @@ import IconButton from "@mui/material/IconButton";
 import Styles from "./responsive.module.scss";
 import {ModalCustom} from '../modal';
 
-export const Responsive = ({ rows }: { rows: any }) => {
+export const Responsive = ({ rows, cargarDatos, setListaDatos }: { rows: any, cargarDatos:Function, setListaDatos:Function }) => {
 
 const Row =(props: { row: any })=> {
 const { row } = props;
@@ -88,6 +88,8 @@ return (
             <ModalCustom
               showDetails={false}
               id="1"
+              cargarDatos={cargarDatos} 
+              setListaDatos={setListaDatos}
             />
           </div>
           <Box>
