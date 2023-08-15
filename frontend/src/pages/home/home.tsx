@@ -23,7 +23,7 @@ async function cargarDatos(setListaDatos:any='') {
     for(let j=0; j < (Object.keys(info['listData']).length); j++) {
 
       let item = {
-        "make": info['listData'][j]['Male'],
+        "make": info['listData'][j]['Make'],
         "model": info['listData'][j]['Model'],
         "package": info['listData'][j]['Package'],
         "color": info['listData'][j]['Color'],

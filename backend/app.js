@@ -17,7 +17,7 @@ router.post('/cars', async (req,res, next) => {
 
   for(let j=1; j < Object.keys(data).length; j++){
     let item = {
-      "Male": data[j][0],
+      "Make": data[j][0],
       "Model": data[j][1],
       "Package": data[j][2],
       "Color": data[j][3],
@@ -43,7 +43,7 @@ router.post('/addCart', async (req,res, next) => {
 
   for(let j=1; j < Object.keys(dataL).length; j++){
     let item = {
-      "Male": dataL[j][0],
+      "Make": dataL[j][0],
       "Model": dataL[j][1],
       "Package": dataL[j][2],
       "Color": dataL[j][3],
@@ -56,7 +56,7 @@ router.post('/addCart', async (req,res, next) => {
      listData.push(item);
   }
 
-  const male = req.body.male;
+  const make = req.body.make;
   const model = req.body.model;
   const package = req.body.packag;
   const color = req.body.color;
@@ -68,7 +68,7 @@ router.post('/addCart', async (req,res, next) => {
 
   let item =
   {
-    "Male": male,
+    "Make": make,
     "Model": model,
     "Package": package,
     "Color": color,
@@ -95,7 +95,7 @@ router.post('/carDetail', async (req,res, next) => {
   for(let j=1; j < Object.keys(data).length; j++){
     if(data[j][8]===id_car) {
       let item = {
-        "Male": data[j][0],
+        "Make": data[j][0],
         "Model": data[j][1],
         "Package": data[j][2],
         "Color": data[j][3],

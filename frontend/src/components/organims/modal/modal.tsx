@@ -70,7 +70,7 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
   const save = () => {
     let scriptURL = 'http://localhost:3001/addCart';
 
-    const male = obtenerValor("#make");
+    const make = obtenerValor("#make");
     const model = obtenerValor("#model");
     const packag = obtenerValor("#package");
     const color = obtenerValor("#color");
@@ -81,7 +81,7 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
     const id = obtenerValor("#id");
 
 
-    const dataU = {male,model,packag,color,year,category,mileage,price,id};
+    const dataU = {make,model,packag,color,year,category,mileage,price,id};
 
     fetch(scriptURL, {
       method: 'POST',
@@ -118,7 +118,7 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
     .then((resp) => resp.json())
     .then(function(info) {
       console.log(info);
-      setMake(info['listData'][0]['Male']);
+      setMake(info['listData'][0]['Make']);
       setModel(info['listData'][0]['Model']);
       setPackage(info['listData'][0]['Package']);
       setColor(info['listData'][0]['Color']);
