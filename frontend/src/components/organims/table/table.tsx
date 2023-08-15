@@ -1,14 +1,18 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
+
+
+
+import styles from "./table.module.scss";
+import {ModalCustom} from '../modal'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -21,20 +25,28 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
 
-export const Tabla = ({
-  rows
-}: {
-  rows: any;
-}) => {
+const rows = [{
+  make: 'hola',
+  model: 'model',
+  package: 'pack',
+  color: 'color',
+  year: 'year',
+  category: 'category',
+  mileage: 'mi',
+  price: 'cents',
+  id: 1
+}]
+
+export const Tabla = ({ rows }: { rows: any }) => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -49,11 +61,15 @@ export const Tabla = ({
             <StyledTableCell align="left">Mileage (mi)</StyledTableCell>
             <StyledTableCell align="left">Price (cents)</StyledTableCell>
             <StyledTableCell align="left">Id</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row: any) => (
-            <StyledTableRow key={row.make}>
+            <StyledTableRow key={row.id}>
+              <StyledTableCell component="th" scope="row">
+                {row.make}
+              </StyledTableCell>
               <StyledTableCell component="th" scope="row">
                 {row.model}
               </StyledTableCell>
@@ -65,13 +81,14 @@ export const Tabla = ({
               <StyledTableCell align="left">{row.price}</StyledTableCell>
               <StyledTableCell align="left">{row.id}</StyledTableCell>
               <StyledTableCell align="right">
-                <div>
-                  <IconButton aria-label="delete" size="small">
-                    <DeleteIcon fontSize="inherit" />
-                  </IconButton>
-                  <IconButton aria-label="delete" size="small">
-                    <DeleteIcon fontSize="inherit" />
-                  </IconButton>
+                <div className={styles.options}>
+                  <ModalCustom
+                    showDetails={false}
+                  />
+                  <ModalCustom
+                    showDetails={true}
+                    rows={rows}
+                  />
                 </div>
               </StyledTableCell>
             </StyledTableRow>
@@ -80,4 +97,4 @@ export const Tabla = ({
       </Table>
     </TableContainer>
   );
-}
+};
