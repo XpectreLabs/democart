@@ -53,7 +53,16 @@ export const Tabla = ({ rows, cargarDatos, setListaDatos }: { rows: any, cargarD
             <StyledTableCell align="left">Mileage (mi)</StyledTableCell>
             <StyledTableCell align="left">Price (cents)</StyledTableCell>
             <StyledTableCell align="left">Id</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="right">
+              <div className={styles.options}>
+                <ModalCustom
+                  showDetails={false}
+                  id={'id'}
+                  cargarDatos={cargarDatos}
+                  setListaDatos={setListaDatos}
+                />
+              </div>
+            </StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -74,12 +83,6 @@ export const Tabla = ({ rows, cargarDatos, setListaDatos }: { rows: any, cargarD
               <StyledTableCell align="left">{row.id}</StyledTableCell>
               <StyledTableCell align="right">
                 <div className={styles.options}>
-                  <ModalCustom
-                    showDetails={false}
-                    id={row.id}
-                    cargarDatos={cargarDatos} 
-                    setListaDatos={setListaDatos}
-                  />
                   <ModalCustom
                     showDetails={true}
                     rows={rows}

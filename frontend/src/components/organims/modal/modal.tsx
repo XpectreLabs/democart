@@ -95,7 +95,7 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
       setTimeout(() => {
           setOpen(false);
           cargarDatos(setListaDatos);
-          // clearFields(); // Added: Clear inputs after to save
+          clearFields(); // Added: Clear inputs after to save
       }, 1200);
     })
     .catch(error => {
@@ -142,7 +142,7 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
           <RemoveRedEyeIcon fontSize="inherit" color="secondary" />
         </IconButton>
       ) : (
-        <IconButton aria-label="edit" size="small" onClick={handleOpen}>
+        <IconButton aria-label="edit" size="large" onClick={handleOpen}>
           <AddCircleOutlineIcon fontSize="inherit" color="success" />
         </IconButton>
       )}
@@ -205,7 +205,6 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
                 <IconButton aria-label="Save" size="large" onClick={()=>{save()}}>
                   <SendIcon fontSize="inherit" color="success" />
                 </IconButton>
-                <Button variant="text" onClick={()=>{clearFields()}}>clear</Button>
               </div>
             </div>
           )}
