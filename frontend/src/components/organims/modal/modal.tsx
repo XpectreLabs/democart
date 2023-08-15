@@ -9,6 +9,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import TextField from "@mui/material/TextField";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import Styles from "./modal.module.scss";
 
@@ -78,7 +79,7 @@ export const ModalCustom = ({ showDetails, id, rows }: { showDetails: boolean, i
         </IconButton>
       ) : (
         <IconButton aria-label="edit" size="small" onClick={handleOpen}>
-          <SendIcon fontSize="inherit" color="success" />
+          <AddCircleOutlineIcon fontSize="inherit" color="success" />
         </IconButton>
       )}
       <Modal
