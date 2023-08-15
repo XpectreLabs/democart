@@ -78,8 +78,6 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
     const category = obtenerValor("#category");
     const mileage = obtenerValor("#mileage");
     const price = obtenerValor("#price");
-    const id = obtenerValor("#id");
-
 
     const dataU = {make,model,packag,color,year,category,mileage,price,id};
 
@@ -187,7 +185,6 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
                   <TextField id="model" label="Model" variant="standard" value={model2} onChange={(e) => setModel2(e.target.value)}/>
                   <TextField id="package" label="Package" variant="standard" value={package2} onChange={(e) => setPackage2(e.target.value)}/>
                   <TextField id="color" label="Color" variant="standard" value={color2} onChange={(e) => setColor2(e.target.value)}/>
-                  <TextField id="id" label="Id" variant="standard" value={idValue} onChange={(e) => setIdValue(e.target.value)}/>
                 </div>
                 <div>
                   <TextField id="year" label="Year" variant="standard" value={year2} onChange={(e) => setYear2(e.target.value)}/>

@@ -64,7 +64,7 @@ router.post('/addCart', async (req,res, next) => {
   const category = req.body.category;
   const mileage = req.body.mileage;
   const price = req.body.price;
-  const id = req.body.id;
+  const id = triggerId();
 
   let item =
   {
@@ -110,6 +110,22 @@ router.post('/carDetail', async (req,res, next) => {
   }
   res.json({listData})
 });
+
+router.get('/cadena', async (req,res, next) => {
+    let result = triggerId();
+    res.json({ result })
+});
+
+function triggerId(){
+  const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result= '';
+  const charactersLength = characters.length;
+  for ( let i = 0; i < 9; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return result;
+}
 
 router.listen(3001, () => {
   console.log("Aplicación ejecutandose ....");
