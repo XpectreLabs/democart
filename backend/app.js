@@ -10,7 +10,7 @@ router.use(express.urlencoded({ extended:false }));
 router.use(express.json());
 router.use(cors());
 
-router.get('/cars', async (req,res, next) => {
+router.post('/cars', async (req,res, next) => {
   let listData = [];
   const fileContent = readFileSync('./Cart.csv')
   const data = parse(fileContent);

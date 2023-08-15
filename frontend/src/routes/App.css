@@ -47,3 +47,32 @@
   overflow-x: auto;
   box-shadow: none !important;
 }
+
+
+.u-textAlignCenter {
+  text-align: center;
+}
+
+.Cargando {
+  display: none;
+  width: 30px;
+  float: right;
+  padding-top: 5px;
+  margin-left: 5px;
+}
+
+.Cargando.Sf {
+  float: none;
+  text-align: center;
+}
+.Cargando.mostrarI-b{
+  display: inline-block;
+}
+
+.Cargando.Mt {
+  margin-top: 0px;
+}
+
+.Cargando.mostrar{
+  display: block;
+}
