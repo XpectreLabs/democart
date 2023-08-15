@@ -35,17 +35,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const rows = [{
-  make: 'hola',
-  model: 'model',
-  package: 'pack',
-  color: 'color',
-  year: 'year',
-  category: 'category',
-  mileage: 'mi',
-  price: 'cents',
-  id: 1
-}]
+let rows = [];
 
 export const Tabla = ({ rows }: { rows: any }) => {
   

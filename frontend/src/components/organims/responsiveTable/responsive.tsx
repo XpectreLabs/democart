@@ -87,6 +87,7 @@ return (
           <div className={Styles.btnEdit}>
             <ModalCustom
               showDetails={false}
+              id="1"
             />
           </div>
           <Box>

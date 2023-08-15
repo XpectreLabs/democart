@@ -64,7 +64,7 @@ export const ModalCustom = ({ showDetails, id, rows }: { showDetails: boolean, i
       setPrice(info['listData'][0]['Price']);
      })
      .catch(error => {
-       alert(error.message);
+       console.log(error.message);
        console.error('Error!', error.message);
      });
   }
