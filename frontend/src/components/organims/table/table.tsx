@@ -38,7 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 let rows = [];
 
 export const Tabla = ({ rows, cargarDatos, setListaDatos }: { rows: any, cargarDatos:Function, setListaDatos:Function }) => {
-  
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">

@@ -64,7 +64,7 @@ export const Home = () => {
     }
   }, 1000);
 
-  
+
   return (
     <div>
       <Box className={styles.table}>

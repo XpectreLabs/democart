@@ -111,8 +111,6 @@ router.post('/carDetail', async (req,res, next) => {
   res.json({listData})
 });
 
-
 router.listen(3001, () => {
   console.log("Aplicación ejecutandose ....");
 });
-
