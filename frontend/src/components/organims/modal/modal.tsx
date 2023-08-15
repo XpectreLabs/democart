@@ -62,30 +62,6 @@ export const ModalCustom = ({ showDetails, rows }: { showDetails: boolean, rows?
                   <li>Category:</li>
                   <li>Mileage:</li>
                   <li>Price:</li>
-                  <li>
-                    <p>make</p>
-                  </li>
-                  <li>
-                    <p>model</p>
-                  </li>
-                  <li>
-                    <p>Package</p>
-                  </li>
-                  <li>
-                    <p>Color</p>
-                  </li>
-                  <li>
-                    <p>Year</p>
-                  </li>
-                  <li>
-                    <p>Category</p>
-                  </li>
-                  <li>
-                    <p>Mileage</p>
-                  </li>
-                  <li>
-                    <p>Price</p>
-                  </li>
                 </Box>
               </Typography>
               <div className={Styles.btnOption}>
