@@ -38,11 +38,33 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
   const [mileage, setMileage] = React.useState("");
   const [price, setPrice] = React.useState("");
 
+  const [make2, setMake2] = React.useState("");
+  const [model2, setModel2] = React.useState("");
+  const [package2, setPackage2] = React.useState("");
+  const [color2, setColor2] = React.useState("");
+  const [year2, setYear2] = React.useState("");
+  const [category2, setCategory2] = React.useState("");
+  const [mileage2, setMileage2] = React.useState("");
+  const [price2, setPrice2] = React.useState("");
+  const [idValue, setIdValue] = React.useState("");
+
   console.log(id)
 
   const obtenerValor = (input:any) => {
     let valorInput: HTMLInputElement = document.querySelector(input);
     return valorInput?.value;
+  };
+
+  const clearFields = () => {
+    setMake2("");
+    setModel2("");
+    setPackage2("");
+    setColor2("");
+    setYear2("");
+    setCategory2("");
+    setMileage2("");
+    setPrice2("");
+    setIdValue("");
   };
 
   const save = () => {
@@ -73,6 +95,7 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
       setTimeout(() => {
           setOpen(false);
           cargarDatos(setListaDatos);
+          // clearFields(); // Added: Clear inputs after to save
       }, 1200);
     })
     .catch(error => {
@@ -160,27 +183,29 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
             <div className={Styles.form}>
               <section>
                 <div>
-                  <TextField id="make" label="Make" variant="standard" />
-                  <TextField id="model" label="Model" variant="standard" />
-                  <TextField id="package" label="Package" variant="standard" />
-                  <TextField id="color" label="Color" variant="standard" />
-                  <TextField id="id" label="Id" variant="standard" />
+                  <TextField id="make" label="Make" variant="standard" value={make2} onChange={(e) => setMake2(e.target.value)}/>
+                  <TextField id="model" label="Model" variant="standard" value={model2} onChange={(e) => setModel2(e.target.value)}/>
+                  <TextField id="package" label="Package" variant="standard" value={package2} onChange={(e) => setPackage2(e.target.value)}/>
+                  <TextField id="color" label="Color" variant="standard" value={color2} onChange={(e) => setColor2(e.target.value)}/>
+                  <TextField id="id" label="Id" variant="standard" value={idValue} onChange={(e) => setIdValue(e.target.value)}/>
                 </div>
                 <div>
-                  <TextField id="year" label="Year" variant="standard" />
+                  <TextField id="year" label="Year" variant="standard" value={year2} onChange={(e) => setYear2(e.target.value)}/>
                   <TextField
                     id="category"
                     label="Category"
                     variant="standard"
+                    value={category2} onChange={(e) => setCategory2(e.target.value)}
                   />
-                  <TextField id="mileage" label="Mileage" variant="standard" />
-                  <TextField id="price" label="Price" variant="standard" />
+                  <TextField id="mileage" label="Mileage" variant="standard" value={mileage2} onChange={(e) => setMileage2(e.target.value)}/>
+                  <TextField id="price" label="Price" variant="standard" value={price2} onChange={(e) => setPrice2(e.target.value)}/>
                 </div>
               </section>
               <div className={Styles.btn}>
                 <IconButton aria-label="Save" size="large" onClick={()=>{save()}}>
                   <SendIcon fontSize="inherit" color="success" />
                 </IconButton>
+                <Button variant="text" onClick={()=>{clearFields()}}>clear</Button>
               </div>
             </div>
           )}
