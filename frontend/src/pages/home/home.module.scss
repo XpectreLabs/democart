@@ -1,0 +1,17 @@
+@media all and (min-width: 718px){
+  .table{
+    display: block;
+  }
+  .mobile{
+    display: none;
+  }
+}
+
+@media all and (max-width: 717px){
+  .table{
+    display: none;
+  }
+  .mobile{
+    display: block;
+  }
+}
