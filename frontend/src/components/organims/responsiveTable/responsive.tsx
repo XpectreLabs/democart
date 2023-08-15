@@ -14,107 +14,111 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 
 import Styles from "./responsive.module.scss";
-import {ModalCustom} from '../modal';
+import { ModalCustom } from "../modal";
 
-export const Responsive = ({ rows, cargarDatos, setListaDatos }: { rows: any, cargarDatos:Function, setListaDatos:Function }) => {
+export const Responsive = ({
+  rows,
+  cargarDatos,
+  setListaDatos,
+}: {
+  rows: any;
+  cargarDatos: Function;
+  setListaDatos: Function;
+}) => {
+  const Row = (props: { row: any }) => {
+    const { row } = props;
+    const [open, setOpen] = React.useState(false);
 
-const Row =(props: { row: any })=> {
-const { row } = props;
-const [open, setOpen] = React.useState(false);
+    return (
+      <React.Fragment>
+        <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+          <TableCell>
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          </TableCell>
+          <TableCell component="th" scope="row">
+            {row.make}
+          </TableCell>
+          <TableCell align="left">{row.model}</TableCell>
+          <TableCell align="left">{row.package}</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <Box sx={{ margin: 1 }}>
+                <Typography variant="h6" gutterBottom component="div">
+                  Details
+                </Typography>
+                <Table size="small" aria-label="purchases">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Color</TableCell>
+                      <TableCell>Year</TableCell>
+                      <TableCell align="left">Category</TableCell>
+                      <TableCell align="left">mi</TableCell>
+                      <TableCell align="left">cents</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow key={row.color}>
+                      <TableCell component="th" scope="row">
+                        {row.color}
+                      </TableCell>
+                      <TableCell>{row.year}</TableCell>
+                      <TableCell align="left">{row.category}</TableCell>
+                      <TableCell align="left">{row.mileage}</TableCell>
+                      <TableCell align="left">{row.price}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </Box>
+            </Collapse>
+          </TableCell>
+        </TableRow>
+      </React.Fragment>
+    );
+  };
 
-return (
-  <React.Fragment>
-    <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-      <TableCell>
-        <IconButton
-          aria-label="expand row"
-          size="small"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-        </IconButton>
-      </TableCell>
-      <TableCell component="th" scope="row">
-        {row.make}
-      </TableCell>
-      <TableCell align="left">{row.model}</TableCell>
-      <TableCell align="left">{row.package}</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <Box sx={{ margin: 1 }}>
-            <Typography variant="h6" gutterBottom component="div">
-              Details
-            </Typography>
-            <Table size="small" aria-label="purchases">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Color</TableCell>
-                  <TableCell>Year</TableCell>
-                  <TableCell align="left">Category</TableCell>
-                  <TableCell align="left">mi</TableCell>
-                  <TableCell align="left">cents</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((historyRow: any) => (
-                  <TableRow key={historyRow.color}>
-                    <TableCell component="th" scope="row">
-                      {historyRow.color}
-                    </TableCell>
-                    <TableCell>{historyRow.year}</TableCell>
-                    <TableCell align="left">{historyRow.category}</TableCell>
-                    <TableCell align="left">{historyRow.mileage}</TableCell>
-                    <TableCell align="left">{historyRow.price}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Box>
-        </Collapse>
-      </TableCell>
-    </TableRow>
-  </React.Fragment>
-);
-}
-
-return (
-  <Box>
-    <Box className={Styles.results}>
-      <Box className={Styles.conten}>
-        <Box className={Styles.resultResponsive}>
-          <div className={Styles.btnEdit}>
-            <ModalCustom
-              showDetails={false}
-              id="1"
-              cargarDatos={cargarDatos} 
-              setListaDatos={setListaDatos}
-            />
-          </div>
-          <Box>
-            <TableContainer component={Paper} className={Styles.table}>
-              <Table aria-label="collapsible table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell />
-                    <TableCell>Make</TableCell>
-                    <TableCell align="left">Model</TableCell>
-                    <TableCell align="left">Package</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map((row: any) => (
-                    <Row key={row.id} row={row} />
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+  return (
+    <Box>
+      <Box className={Styles.results}>
+        <Box className={Styles.conten}>
+          <Box className={Styles.resultResponsive}>
+            <div className={Styles.btnEdit}>
+              <ModalCustom
+                showDetails={false}
+                id="1"
+                cargarDatos={cargarDatos}
+                setListaDatos={setListaDatos}
+              />
+            </div>
+            <Box>
+              <TableContainer component={Paper} className={Styles.table}>
+                <Table aria-label="collapsible table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell />
+                      <TableCell>Make</TableCell>
+                      <TableCell align="left">Model</TableCell>
+                      <TableCell align="left">Package</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rows.map((row: any) => (
+                      <Row key={row.id} row={row} />
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Box>
           </Box>
         </Box>
       </Box>
     </Box>
-  </Box>
-);
-
+  );
 };
