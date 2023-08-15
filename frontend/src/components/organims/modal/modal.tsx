@@ -24,10 +24,51 @@ const style = {
   p: 4,
 };
 
-export const ModalCustom = ({ showDetails, rows }: { showDetails: boolean, rows?: any }) => {
+export const ModalCustom = ({ showDetails, id, rows }: { showDetails: boolean, id:string, rows?: any }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [make, setMake] = React.useState("");
+  const [model, setModel] = React.useState("");
+  const [packageI, setPackage] = React.useState("");
+  const [color, setColor] = React.useState("");
+  const [year, setYear] = React.useState("");
+  const [category, setCategory] = React.useState("");
+  const [mileage, setMileage] = React.useState("");
+  const [price, setPrice] = React.useState("");
+
+  console.log(id)
+
+  const detail = (id:string) => {
+    const scriptURL = 'http://localhost:3001/carDetail'; // deberia es
+    const dataU = {id};
+
+    fetch(scriptURL, {
+       method: 'POST',
+       body: JSON.stringify(dataU),
+       headers:{
+         'Content-Type': 'application/json'
+       }
+     })
+    .then((resp) => resp.json())
+    .then(function(info) {
+      console.log(info);
+      setMake(info['listData'][0]['Male']);
+      setModel(info['listData'][0]['Model']);
+      setPackage(info['listData'][0]['Package']);
+      setColor(info['listData'][0]['Color']);
+      setYear(info['listData'][0]['Year']);
+      setCategory(info['listData'][0]['Category']);
+      setMileage(info['listData'][0]['Mileage']);
+      setPrice(info['listData'][0]['Price']);
+     })
+     .catch(error => {
+       alert(error.message);
+       console.error('Error!', error.message);
+     });
+  }
+
+  detail(id);
 
   return (
     <div>
@@ -54,14 +95,14 @@ export const ModalCustom = ({ showDetails, rows }: { showDetails: boolean, rows?
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 <Box className={Styles.columns}>
-                  <li>Make:</li>
-                  <li>Model:</li>
-                  <li>Package:</li>
-                  <li>Color:</li>
-                  <li>Year:</li>
-                  <li>Category:</li>
-                  <li>Mileage:</li>
-                  <li>Price:</li>
+                  <li>Make: {make}</li>
+                  <li>Model: {model}</li>
+                  <li>Package: {packageI}</li>
+                  <li>Color: {color}</li>
+                  <li>Year: {year}</li>
+                  <li>Category: {category}</li>
+                  <li>Mileage: {mileage}</li>
+                  <li>Price: {price}</li>
                 </Box>
               </Typography>
               <div className={Styles.btnOption}>

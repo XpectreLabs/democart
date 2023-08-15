@@ -13,6 +13,7 @@ import IconButton from "@mui/material/IconButton";
 
 import styles from "./table.module.scss";
 import {ModalCustom} from '../modal'
+import { Details } from "@mui/icons-material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -47,6 +48,7 @@ const rows = [{
 }]
 
 export const Tabla = ({ rows }: { rows: any }) => {
+  
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -84,10 +86,12 @@ export const Tabla = ({ rows }: { rows: any }) => {
                 <div className={styles.options}>
                   <ModalCustom
                     showDetails={false}
+                    id={row.id}
                   />
                   <ModalCustom
                     showDetails={true}
                     rows={rows}
+                    id={row.id}  
                   />
                 </div>
               </StyledTableCell>
