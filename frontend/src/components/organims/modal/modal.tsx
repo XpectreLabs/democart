@@ -18,7 +18,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 280,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -178,6 +178,7 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
               </div>
             </div>
           ) : (
+            <>
             <div className={Styles.form}>
               <section>
                 <div>
@@ -204,6 +205,33 @@ export const ModalCustom = ({ showDetails, id, rows, cargarDatos, setListaDatos 
                 </IconButton>
               </div>
             </div>
+
+            <div className={Styles.form2}>
+              <section>
+                
+                  <TextField id="make" label="Make" variant="standard" value={make2} onChange={(e) => setMake2(e.target.value)} fullWidth />
+                  <TextField id="model" label="Model" variant="standard" value={model2} onChange={(e) => setModel2(e.target.value)} fullWidth />
+                  <TextField id="package" label="Package" variant="standard" value={package2} onChange={(e) => setPackage2(e.target.value)} fullWidth />
+                  <TextField id="color" label="Color" variant="standard" value={color2} onChange={(e) => setColor2(e.target.value)} fullWidth />
+                
+                  <TextField id="year" label="Year" variant="standard" value={year2} onChange={(e) => setYear2(e.target.value)} fullWidth />
+                  <TextField
+                    id="category"
+                    label="Category"
+                    variant="standard"
+                    value={category2} onChange={(e) => setCategory2(e.target.value)} fullWidth 
+                  />
+                  <TextField id="mileage" label="Mileage" variant="standard" value={mileage2} onChange={(e) => setMileage2(e.target.value)} fullWidth />
+                  <TextField id="price" label="Price" variant="standard" value={price2} onChange={(e) => setPrice2(e.target.value)} fullWidth />
+                
+              </section>
+              <div className={Styles.btn}>
+                <IconButton aria-label="Save" size="large" onClick={()=>{save()}}>
+                  <SendIcon fontSize="inherit" color="success" />
+                </IconButton>
+              </div>
+            </div>
+            </>
           )}
         </Box>
       </Modal>

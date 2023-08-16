@@ -20,3 +20,18 @@
   text-align: left;
   list-style: none;
 }
+
+@media all and (min-width: 718px){
+  .form2{
+    display: none;
+  }
+}
+
+@media all and (max-width: 717px){
+  .form{
+    display: none;
+  }
+  .form2{
+    display: block;
+  }
+}
